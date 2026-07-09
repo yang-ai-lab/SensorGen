@@ -1,0 +1,28 @@
+# SensorGen — Text-to-ECG generation (MIMIC-IV ECG)
+# Free-text ECG report -> 12-lead ECG waveform.
+# Checkpoint: text2ecg.pt  (Hugging Face: yang-ai-lab/SensorGen)
+
+task: text2ecg
+task_type: generation
+
+# ── Data ──
+dataset: mimic_iv_ecg
+h5_dir: /path/to/mimic_iv/processed        # directory holding mimic_iv_ecg_*sr.h5
+csv_path: /path/to/preprocessed_reports.csv
+text_col: total_report
+target_sr: 100
+seg_len: 1000                              # 10 s @ 100 Hz
+split: test
+
+# ── Model (architecture is loaded by the SensorGen inference code) ──
+in_channels: 12
+series_length: 1000
+patch_size: 20
+num_classes: 1000
+class_dropout_prob: 0.1
+use_prompting: true
+cfg_scale: 1.0                             # > 1.0 enables classifier-free guidance
+
+# ── Sampler / transport ──
+path_type: Linear
+prediction: velocity

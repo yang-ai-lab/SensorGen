@@ -1,0 +1,34 @@
+# SensorGen — Python dependencies (Python >= 3.10).
+#
+# Install PyTorch first, matched to your CUDA / accelerator build, e.g.:
+#   pip install torch torchvision torchaudio
+# (Hopper / GH200 builds recommended; see https://pytorch.org/get-started/locally/)
+# then:  pip install -r requirements.txt
+
+# --- core deep learning ---
+torch>=2.4
+torchvision
+torchdiffeq            # ODE/SDE integrators used by the model implementation
+timm                   # transformer building blocks
+einops
+
+# --- text-to-ECG conditioning (SD3 text encoder, downloaded at runtime) ---
+diffusers
+transformers
+safetensors
+
+# --- data / signal processing ---
+numpy
+pandas
+scipy
+scikit-learn
+h5py
+pyarrow
+wfdb                   # PhysioNet waveform I/O
+
+# --- utilities ---
+huggingface_hub        # checkpoint download (hf_hub_download from yang-ai-lab/SensorGen)
+pyyaml
+tqdm
+Pillow
+wandb                  # optional experiment logging (enabled with --wandb)

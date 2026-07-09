@@ -1,0 +1,36 @@
+# SensorGen — Invasive blood-pressure reconstruction (VitalDB)
+# PPG waveform + NIBP summary vector -> arterial (ART) blood-pressure waveform.
+# Checkpoint: bp_translation.pt  (Hugging Face: yang-ai-lab/SensorGen)
+
+task: bp_translation
+task_type: cross_channel
+
+# ── Data ──
+dataset: vitaldb_translate
+h5_path: /path/to/vitaldb_translate/vitaldb_translate_nativesr.h5
+x_signals:
+  - art_target          # generated target: invasive arterial BP
+c2_signals:
+  - ppg_condition       # dense cross-attention condition: PPG waveform
+y_signals:
+  - nibp_vector         # sparse conditioning: 6-D NIBP summary
+target_sr: 50
+window_sec: 30          # 1500 samples @ 50 Hz
+split: test
+
+# ── Model (architecture is loaded by the SensorGen inference code) ──
+in_channels: 1
+c2_in_channels: 1
+y_cond_channels: 6
+y_input_len: 1          # schema field; cross_channel derives length from series_length
+series_length: 1500
+patch_size: 20
+y_pool_type: mean
+c2_depth: 2
+num_classes: 1000
+class_dropout_prob: 0.1
+cfg_scale: 1.0
+
+# ── Sampler / transport ──
+path_type: Linear
+prediction: velocity
