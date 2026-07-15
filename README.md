@@ -1,6 +1,4 @@
-# SensorGen
-
-Code examples for running the two released **SensorGen** checkpoints.
+# SensorGen: Generative Models for Real-World Sensor Time Series
 
 [![paper](https://img.shields.io/badge/paper-arXiv-b31b1b)](https://arxiv.org/abs/2607.04245)
 [![Website](https://img.shields.io/badge/website-SensorGen-blue)](https://yang-ai-lab.github.io/sensor-gen)
@@ -207,11 +205,9 @@ the SensorGen paper (preprint forthcoming):
 
 ```bibtex
 @article{shuai2026sensorgen,
-  title={Signal or Noise? Understanding Generative Models for Real-World
-         Sensor Time Series},
-  author={Shuai, Zitao and Xu, Zongzhe and Wu, Yuntian and Li, Sirui and
-          Li, Tianhong and Yang, Yuzhe},
-  journal={arXiv preprint},
+  title={Signal or Noise? Understanding Generative Models for Real-World Sensor Time Series},
+  author={Shuai, Zitao and Xu, Zongzhe and Wu, Yuntian and Li, Sirui and Li, Tianhong and Yang, Yuzhe},
+  journal={arXiv preprint arXiv:2607.04245},
   year={2026}
 }
 ```
